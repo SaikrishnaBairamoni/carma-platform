@@ -40,7 +40,9 @@ jobs:
         run: mv $GITHUB_WORKSPACE/src /opt/carma/
         shell: bash
       - name: List directory contents (Diagnostic Step)
-        run: ls -la ./src/${{ needs.checkout.outputs.repository-name }}/docker/
+        run: |
+          ls -la && pwd 
+          ls -la ./src/${{ needs.checkout.outputs.repository-name }}/docker/
         shell: bash
       - name: Checkout dependencies
         run: |
