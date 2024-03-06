@@ -39,16 +39,13 @@ jobs:
       - name: Move source code
         run: mv $GITHUB_WORKSPACE/src /opt/carma/
         shell: bash
-      - name: List directory contents (Diagnostic Step)
-        run: ls -la /opt/carma/src/${{ needs.checkout.outputs.repository-name }}/docker/
-        shell: bash
       - name: Checkout dependencies
         run: |
           source "/home/carma/.base-image/init-env.sh"
           /opt/carma/src/${{ needs.checkout.outputs.repository-name }}/docker/checkout.bash -r /opt/carma/
         shell: bash
       - name: Install external dependencies
-        run: sudo bash /opt/carma/src/${{ needs.checkout.outputs.repository-name }}/multiple_object_tracking/scripts/install_dependencies.sh
+        run: /opt/carma/src/multiple_object_tracking/scripts/install_dependencies.sh
         shell: bash
 
   build-ROS1:
